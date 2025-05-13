@@ -54,3 +54,16 @@ EOF
 .dlt/credentials/
 .dlt/config.toml
 .dlt/state/
+# DLT (Data Load Tool)
+.dlt/secrets.toml
+.dlt/secrets.*
+.dlt/credentials/
+.dlt/config.toml
+.dlt/state/
+
+# DLT (Data Load Tool)
+.dlt/secrets.toml
+.dlt/secrets.*
+.dlt/credentials/
+.dlt/config.toml
+.dlt/state/
