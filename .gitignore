@@ -1,0 +1,44 @@
+
+
+# dbt
+target/
+dbt_packages/
+logs/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+env/
+venv/
+dbt-env/
+
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+*.env
+env_vars
+secrets/
+credentials/
+
+# dbt profiles (if storing locally)
+profiles.yml
+!profiles_template.yml
+
+# AWS credentials
+.aws/
+aws-credentials
+*.pem
+
+# Mac
+.DS_Store
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Logs
+*.log
+dbt.log
