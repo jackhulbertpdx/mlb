@@ -51,3 +51,8 @@ EOF
 git rm -r --cached .
 git add .
 git status
+.dlt/secrets.toml
+.dlt/secrets.*
+.dlt/credentials/
+.dlt/config.toml
+.dlt/state/
