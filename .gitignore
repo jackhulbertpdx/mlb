@@ -1,5 +1,8 @@
+# First, backup your current .gitignore
+cp .gitignore .gitignore.backup
 
-
+# Create a properly formatted .gitignore
+cat > .gitignore << 'EOF'
 # dbt
 target/
 dbt_packages/
@@ -42,3 +45,9 @@ aws-credentials
 # Logs
 *.log
 dbt.log
+EOF
+
+# Now refresh Git's cache
+git rm -r --cached .
+git add .
+git status
