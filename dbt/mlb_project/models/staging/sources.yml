@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: mlb_raw
+    description: "Raw MLB data from the stats API"
+    database: motherduck_database
+    schema: mlb_data
+    tables:
+      - name: mlb_team_rosters
+        description: "Complete MLB team roster data with player stats"
+        columns:
+          - name: PLAYER_ID
+            description: "MLB player unique identifier"
+            tests:
+              - not_null
+          - name: TEAM_ID
+            description: "MLB team unique identifier"  
+            tests:
+              - not_null
+          - name: SEASON
+            description: "MLB season year"
+            tests:
+              - not_null
