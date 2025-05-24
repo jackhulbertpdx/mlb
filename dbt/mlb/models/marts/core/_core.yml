@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: dim_players
+    description: "Dimension table containing player biographical information"
+    columns:
+      - name: player_id
+        description: "Unique identifier for each player"
+        tests:
+          - not_null
+          - unique
+      - name: full_name
+        description: "Player's full name"
+        tests:
+          - not_null
+      - name: primary_position_code
+        description: "Player's primary position code"
+      - name: player_status
+        description: "Current status of the player"
+        tests:
+          - accepted_values:
+              values: ['Active', 'Retired']
+  
+  - name: dim_teams
+    description: "Dimension table containing team information"
+    columns:
+      - name: team_id
+        description: "Unique identifier for each team"
+        tests:
+          - not_null
+          - unique
+      - name: team_name
+        description: "Team name"
+        tests:
+          - not_null
+  
+  - name: dim_seasons
+    description: "Dimension table containing season information"
+    columns:
+      - name: season
+        description: "Season year"
+        tests:
+          - not_null
+          - unique
+      - name: season_status
+        description: "Status of the season"
+        tests:
+          - accepted_values:
+              values: ['Completed', 'Current', 'Future']
+  
+  - name: dim_positions
+    description: "Dimension table containing position information"
+    columns:
+      - name: position_code
+        description: "Position code"
+        tests:
+          - not_null
+          - unique
+      - name: position_group
+        description: "Position grouping"
+        tests:
+          - accepted_values:
+              values: ['Pitcher', 'Catcher', 'Infield', 'Outfield', 'Designated Hitter', 'Other']

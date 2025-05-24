@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: rpt_player_complete_seasons
+    description: "Complete player statistics combining hitting and pitching for each season"
+    columns:
+      - name: player_id
+        description: "Unique identifier for each player"
+        tests:
+          - not_null
+      - name: player_type
+        description: "Classification of player based on their role"
+        tests:
+          - accepted_values:
+              values: ['Two-Way Player', 'Position Player', 'Pitcher', 'Unknown']
+      - name: primary_skill
+        description: "Primary skill classification"
+        tests:
+          - accepted_values:
+              values: ['Hitter', 'Pitcher', 'Two-Way', 'Bench/Utility']
+  
+  - name: rpt_team_season_stats
+    description: "Complete team statistics for each season"
+    columns:
+      - name: team_id
+        description: "Unique identifier for each team"
+        tests:
+          - not_null
+      - name: season
+        description: "Season year"
+        tests:
+          - not_null
+      - name: team_win_pct
+        description: "Team winning percentage"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1
+              config:
+                where: "team_win_pct is not null"
+      - name: pythagorean_win_pct
+        description: "Expected winning percentage based on runs scored/allowed"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1
+              config:
+                where: "pythagorean_win_pct is not null"
+  
+  - name: rpt_league_leaders
+    description: "League leaders in various statistical categories by season"
+    columns:
+      - name: season
+        description: "Season year"
+        tests:
+          - not_null
+          - unique
+      - name: batting_avg_value
+        description: "Highest batting average"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0.200
+              max_value: 0.500
+              config:
+                where: "batting_avg_value is not null"

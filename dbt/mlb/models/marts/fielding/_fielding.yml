@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: fact_fielding_player_seasons
+    description: "Fact table containing fielding statistics and advanced metrics for each player season by position"
+    columns:
+      - name: player_team_season_position_key
+        description: "Surrogate key for player-team-season-position combination"
+        tests:
+          - not_null
+          - unique
+      - name: player_id
+        description: "Foreign key to dim_players"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_players')
+              field: player_id
+      - name: fielding_percentage
+        description: "Fielding percentage"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0.8
+              max_value: 1
+              config:
+                where: "fielding_percentage is not null"
+      - name: range_factor_per_game
+        description: "Range factor per game (putouts + assists / games)"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 20
+              config:
+                where: "range_factor_per_game is not null"
+      - name: position_type
+        description: "General category of the position"
+        tests:
+          - accepted_values:
+              values: ['Pitcher', 'Catcher', 'Infield', 'Outfield', 'Designated Hitter', 'Unknown']

@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: fact_hitting_player_seasons
+    description: "Fact table containing hitting statistics and advanced metrics for each player season"
+    columns:
+      - name: player_team_season_key
+        description: "Surrogate key for player-team-season combination"
+        tests:
+          - not_null
+          - unique
+      - name: player_id
+        description: "Foreign key to dim_players"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_players')
+              field: player_id
+      - name: team_id
+        description: "Foreign key to dim_teams"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_teams')
+              field: team_id
+      - name: season
+        description: "Foreign key to dim_seasons"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_seasons')
+              field: season
+      - name: hitting_avg
+        description: "Batting average"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1
+              config:
+                where: "hitting_avg is not null"
+      - name: hitting_ops
+        description: "On-base plus slugging percentage"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 3
+              config:
+                where: "hitting_ops is not null"
+      - name: ops_plus
+        description: "League-adjusted OPS where 100 is average"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 300
+              config:
+                where: "ops_plus is not null"

@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: int_player_hitting_seasons
+    description: "Intermediate hitting statistics by player-team-season"
+    columns:
+      - name: player_team_season_key
+        description: "Surrogate key for player-team-season combination"
+        tests:
+          - not_null
+          - unique
+      - name: hitting_pa
+        description: "Plate appearances"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 800
+      - name: is_qualified_hitter
+        description: "Whether player meets minimum PA threshold"
+  
+  - name: int_player_pitching_seasons
+    description: "Intermediate pitching statistics by player-team-season"
+    columns:
+      - name: player_team_season_key
+        description: "Surrogate key for player-team-season combination"
+        tests:
+          - not_null
+          - unique
+      - name: pitching_ip
+        description: "Innings pitched"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 300
+      - name: is_qualified_pitcher
+        description: "Whether player meets minimum IP threshold"
+      - name: pitcher_role
+        description: "Classification of pitcher role"
+        tests:
+          - accepted_values:
+              values: ['Starter', 'Closer', 'Reliever']
+  
+  - name: int_player_fielding_seasons
+    description: "Intermediate fielding statistics by player-team-season-position"
+    columns:
+      - name: player_team_season_position_key
+        description: "Surrogate key for player-team-season-position combination"
+        tests:
+          - not_null
+          - unique
+      - name: fielding_games
+        description: "Games played at this position"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+              max_value: 162
+      - name: position_type
+        description: "General category of the position"
+        tests:
+          - accepted_values:
+              values: ['Pitcher', 'Catcher', 'Infield', 'Outfield', 'Designated Hitter', 'Unknown']
