@@ -1,4 +1,5 @@
 # MLB Analytics Platform
+
 A data pipeline and analytics dashboard for Major League Baseball statistics, built with dbt, MotherDuck, and Evidence.dev.
 Purpose
 This project extracts player and team statistics from the MLB Stats API, transforms the data into a dimensional model with advanced baseball metrics, and presents the results through an interactive app.
