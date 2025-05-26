@@ -1,0 +1,1 @@
+select * from MLB_DATA.rpt_player_complete_seasons

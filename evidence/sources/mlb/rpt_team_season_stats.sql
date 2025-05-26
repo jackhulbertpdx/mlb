@@ -1,0 +1,1 @@
+select * from MLB_DATA.rpt_team_season_stats

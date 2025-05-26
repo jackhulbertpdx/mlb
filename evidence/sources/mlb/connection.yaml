@@ -1,0 +1,5 @@
+# This file was automatically generated
+name: mlb
+type: motherduck
+options:
+  database: motherduck_database
