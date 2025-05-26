@@ -32,29 +32,5 @@ Interactive filtering by season, team, player
 Team performance analysis with Pythagorean win expectation
 Player comparison tools and league leader boards
 
-Setup
-bash# Install dependencies
-pip install dbt-core dbt-duckdb
-npm install -g @evidence-dev/evidence
 
-# Set env variables
-export MOTHERDUCK_TOKEN="your_token_here"
 
-# Run dbt models
-cd dbt
-dbt run
-
-# Start Evidence app
-cd evidence  
-npm run dev
-Files Structure
-├── dbt/                    # dbt project
-│   ├── models/
-│   │   ├── staging/        # Raw data cleanup
-│   │   ├── intermediate/   # Business logic
-│   │   ├── marts/          # Fact tables and metrics
-│   │   └── reports/        # Dashboard-ready views
-│   └── macros/             # Reusable SQL functions
-├── evidence/               # Evidence.dev dashboard
-│   └── pages/              # Dashboard pages
-└── mlb_data_loader.py      # Data extraction script
