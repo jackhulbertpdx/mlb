@@ -4,12 +4,6 @@ A data pipeline and analytics dashboard for Major League Baseball statistics, bu
 Purpose
 This project extracts player and team statistics from the MLB Stats API, transforms the data into a dimensional model with advanced baseball metrics, and presents the results through an interactive app.
 
-
-Extract: Python script pulls 3 years of MLB data (2020-2022) from the official MLB Stats API
-Load: Raw data is stored in MotherDuck cloud data warehouse
-Transform: dbt models clean, structure, and calculate advanced metrics
-Visualize: Evidence.dev dashboard provides interactive analytics
-
 # Data Model
 
 - Staging Layer: Cleaned and standardized raw data
@@ -20,10 +14,10 @@ Visualize: Evidence.dev dashboard provides interactive analytics
 
 # Tech Stack
 
-Data Warehouse: MotherDuck (cloud DuckDB)
-Data Transformation: dbt Core
-ETL: Python with requests library (moving to dlt)
-Viz: Evidence.dev
+- Data Warehouse: MotherDuck (cloud DuckDB)
+- Data Transformation: dbt Core
+- ETL: Python with requests library (moving to dlt)
+- Viz: Evidence.dev
 
 # Key Features
 
