@@ -5,7 +5,7 @@ import duckdb
 import os
 
 # Your MotherDuck token
-MOTHERDUCK_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphY2todWxiZXJ0cGR4QGdtYWlsLmNvbSIsInNlc3Npb24iOiJqYWNraHVsYmVydHBkeC5nbWFpbC5jb20iLCJwYXQiOiJ5RS1ROFYyZEEtMXJPQ1VRZTAxTVRVMGdaREdxYzFpLVJmNkQ4RFFqWVFRIiwidXNlcklkIjoiNzVlOGYzOWUtNzU4Yy00Y2Y3LWFlNTQtYWQwNmJhZDlkMjIwIiwiaXNzIjoibWRfcGF0IiwicmVhZE9ubHkiOmZhbHNlLCJ0b2tlblR5cGUiOiJyZWFkX3dyaXRlIiwiaWF0IjoxNzQ2NzYwMjU1fQ.879bBYJ1z3TZ-qhbXtanlxXBzFMYAyjnWHga14-5qlI"
+MOTHERDUCK_TOKEN = "${MOTHERDUCK_TOKEN}"
 
 # Set the token as an environment variable (for dlt to use later)
 os.environ["MOTHERDUCK_TOKEN"] = MOTHERDUCK_TOKEN
