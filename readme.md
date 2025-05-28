@@ -12,11 +12,11 @@ Visualize: Evidence.dev dashboard provides interactive analytics
 
 # Data Model
 
-Staging Layer: Cleaned and standardized raw data
-Core Dimensions: Players, teams, seasons, positions
-Fact Tables: Player hitting, pitching, and fielding statistics by season
-Metrics Layer: Advanced sabermetrics (wOBA, FIP, ERA+, OPS+, etc.)
-Reporting Views: Aggregated data for dashboard consumption
+- Staging Layer: Cleaned and standardized raw data
+- Core Dimensions: Players, teams, seasons, positions
+- Fact Tables: Player hitting, pitching, and fielding statistics by season
+- Metrics Layer: Advanced sabermetrics (wOBA, FIP, ERA+, OPS+, etc.)
+- Reporting Views: Aggregated data for dashboard consumption
 
 # Tech Stack
 
