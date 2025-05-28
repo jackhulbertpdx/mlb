@@ -10,10 +10,7 @@ import datetime
 import json
 
 # Your MotherDuck token
-MOTHERDUCK_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphY2todWxiZXJ0cGR4QGdtYWlsLmNvbSIsInNlc3Npb24iOiJqYWNraHVsYmVydHBkeC5nbWFpbC5jb20iLCJwYXQiOiJ2bXVoZ3B6ZWNqX0lZZDIwY0ZvNmh4NjJ3eE4yZmN5djZKX1dUeTF6TVdJIiwidXNlcklkIjoiNzVlOGYzOWUtNzU4Yy00Y2Y3LWFlNTQtYWQwNmJhZDlkMjIwIiwiaXNzIjoibWRfcGF0IiwicmVhZE9ubHkiOmZhbHNlLCJ0b2tlblR5cGUiOiJyZWFkX3dyaXRlIiwiaWF0IjoxNzQ2NzU2MjM0fQ.-YE5HF2rWb8daqtfv-KKmEpQn08NKZTB3h6-r5CpHeU"
-
-# Connect directly to MotherDuck
-print("Connecting to MotherDuck...")
+MOTHERDUCK_TOKEN = "${MOTHERDUCK_TOKEN}"
 conn = duckdb.connect(f"md:motherduck_database?motherduck_token={MOTHERDUCK_TOKEN}")
 
 # Define the exact column names from the DDL
